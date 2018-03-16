@@ -6,11 +6,12 @@
 package com.mycompany.testwebproject.Controllers;
 
 import javax.websocket.server.PathParam;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.mycompany.testwebproject.dao.type.TestType;
+import com.mycompany.testwebproject.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  *
@@ -19,18 +20,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class TestController {
-    
-    @RequestMapping(value = "test", method = RequestMethod.GET)
-    public String testController(@RequestParam(value = "id",
-            required = false,defaultValue = "0") Integer id){
-        return "Hellow test id = " + id;
+
+    @Autowired
+    TestService testService;
+
+    @RequestMapping(value = "mapper", method = RequestMethod.GET)
+    public List<String> getAll(){
+        return testService.getStrTest();
     }
-     @RequestMapping(value = "test/{nameUser}/id", method = RequestMethod.GET)
+
+    @RequestMapping(value = "test/{nameUser}/id", method = RequestMethod.GET)
     public String testControllerName(
             @PathVariable("nameUser") String name,
             @RequestParam(value = "id",
             required = false,defaultValue = "0") Integer id){
+
         return "Hellow "+ name + " you id = " + id;
+
     }
     
     

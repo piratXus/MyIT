@@ -5,8 +5,12 @@
  */
 package com.mycompany.testwebproject.configuration;
 
+import com.mycompany.testwebproject.mybatisMappers.TestMapper;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.context.annotation.Configuration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +21,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  * @author piratXus
  */
 @Configuration
-@MapperScan("com.mycompany.testwebproject.persistence")
+@MapperScan("resources.com.mycompany.testwebproject.persistences")
 public class DataConfig  {
     
     @Bean
@@ -36,11 +40,18 @@ public class DataConfig  {
     }
 
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactory() throws Exception {
-            SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-            sessionFactory.setDataSource(dataSource());
-            sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:**/persistence/*.xml"));
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
+        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+        sqlSessionFactory.setDataSource(dataSource());
+        sqlSessionFactory.setTypeAliasesPackage("com.mycompany.testwebproject.dao.type");
+        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:com/mycompany/testwebproject/persistence/*.xml)"));
+        return sqlSessionFactory.getObject();
+    }
 
-            return sessionFactory;
+    @Bean
+    public MapperFactoryBean<TestMapper> testMapper() throws Exception {
+        MapperFactoryBean<TestMapper> factoryBean = new MapperFactoryBean<>(TestMapper.class);
+        factoryBean.setSqlSessionFactory(sqlSessionFactory());
+        return factoryBean;
     }
 }

@@ -1,0 +1,8 @@
+com\mycompany\testwebproject\mybatisMappers\TestMapper.class
+com\mycompany\testwebproject\dao\type\TestType.class
+com\mycompany\testwebproject\configuration\AppConfig.class
+com\mycompany\testwebproject\service\TestServiceImpl.class
+com\mycompany\testwebproject\service\TestService.class
+com\mycompany\testwebproject\configuration\DataConfig.class
+com\mycompany\testwebproject\configuration\AppInitialization.class
+com\mycompany\testwebproject\Controllers\TestController.class
