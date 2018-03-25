@@ -5,11 +5,13 @@
  */
 package com.mycompany.testwebproject.dao.type;
 
+import java.io.Serializable;
+
 /**
  *
  * @author piratXus
  */
-public class TestType {
+public class TestType implements Serializable {
     private Long id;
     private String testStr;
 

@@ -5,6 +5,8 @@
  */
 package com.mycompany.testwebproject.service;
 
+import com.mycompany.testwebproject.dao.type.TestType;
+
 import java.util.List;
 
 /**
@@ -12,5 +14,5 @@ import java.util.List;
  * @author piratXus
  */
 public interface TestService {
-    public List<String> getStrTest();
+    public List<TestType> getStrTest();
 }

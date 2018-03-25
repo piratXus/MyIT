@@ -5,6 +5,8 @@
  */
 package com.mycompany.testwebproject.mybatisMappers;
 
+import com.mycompany.testwebproject.dao.type.TestType;
+
 import java.util.List;
 
 /**
@@ -12,5 +14,6 @@ import java.util.List;
  * @author piratXus
  */
 public interface TestMapper {
-    public List<String> getStrTest();
+    public List<TestType> getStrTest();
+    public List<TestType> getAll();
 }

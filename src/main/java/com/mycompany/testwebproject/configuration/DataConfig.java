@@ -21,7 +21,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  * @author piratXus
  */
 @Configuration
-@MapperScan("resources.com.mycompany.testwebproject.persistences")
+@MapperScan("com.mycompany.testwebproject.mybatisMappers")
 public class DataConfig  {
     
     @Bean
@@ -44,7 +44,8 @@ public class DataConfig  {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource());
         sqlSessionFactory.setTypeAliasesPackage("com.mycompany.testwebproject.dao.type");
-        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:com/mycompany/testwebproject/persistence/*.xml)"));
+        sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
+                .getResources("classpath*:com/mycompany/testwebproject/persistence/*.xml)"));
         return sqlSessionFactory.getObject();
     }
 

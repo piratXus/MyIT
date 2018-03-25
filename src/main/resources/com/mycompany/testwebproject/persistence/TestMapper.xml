@@ -8,7 +8,7 @@
         <result property="testStr" column="testStr"/>
     </resultMap>
 
-    <select id="getStrTest" resultMap="testResult">
+    <select id="getAll" resultMap="testResult">
         SELECT
           a.id,
           a.testStr

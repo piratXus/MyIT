@@ -5,6 +5,7 @@
  */
 package com.mycompany.testwebproject.service;
 
+import com.mycompany.testwebproject.dao.type.TestType;
 import com.mycompany.testwebproject.mybatisMappers.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class TestServiceImpl implements TestService
     TestMapper testMapper;
     
     @Override
-    public List<String> getStrTest() {
-        return testMapper.getStrTest();
+    public List<TestType> getStrTest() {
+        return testMapper.getAll();
     }
     
 }

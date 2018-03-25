@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.testwebproject.Controllers;
+package com.mycompany.testwebproject.controllers;
 
-import javax.websocket.server.PathParam;
 import com.mycompany.testwebproject.dao.type.TestType;
 import com.mycompany.testwebproject.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class TestController {
     TestService testService;
 
     @RequestMapping(value = "mapper", method = RequestMethod.GET)
-    public List<String> getAll(){
+    public List<TestType> getAll(){
         return testService.getStrTest();
     }
 
